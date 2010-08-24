@@ -1,0 +1,32 @@
+h1. A gem to simplify interaction with VMServer.
+
+Let's see how to configure and use the gem.
+Place all your configuartion in the initialize block.
+Now interacting with VMServer should be a piece of cake :)
+
+
+@ vmserver = VMServer.new do |vm|
+  vm.host             = 'https://xx.xx.xx.xx:8333/sdk'
+  vm.vm_user          = 'root'
+  vm.vm_password      = 'xxxxxxxx'
+  vm.guest_password   = 'xxxxxxxxxx'
+  vm.guest_user       = 'administrator'
+  vm.datastore        = '[standard] img/img.vmx'
+  vm.url              = 'www.xyz.com'
+  vm.logging_enabled  = true
+end
+@
+
+*To start the VMServer*
+
+  @vmserver.start@
+
+*To create a directory in the Guest OS*
+
+  @vmserver.mkdir('dir')@
+
+*To copy a file from Host OS to Guest OS*
+
+  @vmserver.copy_file_from_host_to_guest('src','dest')
+
+  *_Note_* The src and dest need to be absolute paths.
