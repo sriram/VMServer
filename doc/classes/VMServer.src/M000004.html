@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>vm_start (VMServer)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/vmserver.rb, line 36</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">vm_start</span>
+    <span class="ruby-identifier">vm_command</span> = <span class="ruby-node">&quot;#{@base_command} #{command} \'#{@datastore}\'&quot;</span>
+    <span class="ruby-identifier">log</span> <span class="ruby-identifier">vm_command</span>
+    <span class="ruby-identifier">result</span> = <span class="ruby-identifier">system</span>(<span class="ruby-identifier">vm_command</span>)
+    <span class="ruby-identifier">result</span>  <span class="ruby-value">? </span><span class="ruby-identifier">log</span>(<span class="ruby-value str">&quot;VM started successfully has been executed.&quot;</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">log</span>(<span class="ruby-value str">&quot;Error! VM could not be started.&quot;</span>)
+    <span class="ruby-identifier">result</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

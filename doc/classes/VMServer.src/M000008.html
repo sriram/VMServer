@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>get_processes_in_guest (VMServer)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/vmserver.rb, line 84</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_processes_in_guest</span>
+    <span class="ruby-identifier">processes</span> = <span class="ruby-node">`#{@base_command} -gu #{@guest_user} -gp #{guest_password} #{command} \'#{@datastore}\'`</span>
+    <span class="ruby-identifier">processes</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

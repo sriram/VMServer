@@ -3,11 +3,14 @@ class VMServer
   attr_accessor :vm_user, :vm_password, :guest_user, :guest_password, :datastore, :host, :url, :logging_enabled
 
   def initialize
-    yield self if block_given?
+    yield self
+    raise ArgumentError,  "Please make sure you have set host ,vm_user and vm_password in the configuration!" unless @host || @vm_user || @vm_password
+
     # This is the base command used for all the commands.
     @base_command       = "vmrun -T server -h #{@host} -u #{@vm_user} -p #{@vm_password}"
   end
 
+  
   ##
   # Logs if logging is enabled
 
@@ -20,7 +23,7 @@ class VMServer
   # Checks if a file exists in the guest OS
 
   def file_exists_in_guest?(file)
-    vm_command = "#{@base_command} -gu #{guest_user} -gp #{guest_password} fileExistsInGuest \'#{datastore}\' #{file}"
+    vm_command = "#{@base_command} -gu #{@guest_user} -gp #{@guest_password} fileExistsInGuest \'#{datastore}\' #{file}"
     output = system(vm_command)
     if output =~ /The file exists/
       return true
@@ -33,7 +36,8 @@ class VMServer
   ##
   # Start up the Virtual Machine
 
-  def vm_start
+  def start
+    command    = 'start'
     vm_command = "#{@base_command} #{command} \'#{@datastore}\'"
     log vm_command
     result = system(vm_command)
@@ -45,7 +49,8 @@ class VMServer
   ##
   #  Create a directory in the Virtual Machine
 
-  def vm_mkdir(dir)
+  def mkdir(dir)
+    command    = 'createDirectoryInGuest'
     vm_command = "#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} \'#{@datastore}\' \'#{dir}\'"
     log vm_command
     result = system(vm_command)
@@ -54,10 +59,11 @@ class VMServer
   end
 
 
-##
-# Copy a file from host OS to Guest OS
+  ##
+  # Copy a file from host OS to Guest OS
 
   def copy_file_from_host_to_guest(src, dest)
+    command    = 'copyFileFromHostToGuest'
     vm_command = "#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} \'#{@datastore}\' \'#{src}\' \'#{dest}\'"
     log vm_command
     result = system(vm_command)
@@ -69,7 +75,8 @@ class VMServer
   ##
   # Copy a file from Guest OS to Host OS
 
-  def copy_from_guest_to_host(src,dest)
+  def copy_file_from_guest_to_host(src,dest)
+    command    = 'copyFileFromGuestToHost'
     vm_command = "#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} \'#{@datastore}\' \'#{src}\' \'#{dest}\'"
     log vm_command
     result = system(vm_command)
@@ -82,6 +89,7 @@ class VMServer
   # Get a list of processes running in the Guest OS
 
   def get_processes_in_guest
+    command   = 'listProcessesInGuest'
     processes = `#{@base_command} -gu #{@guest_user} -gp #{guest_password} #{command} \'#{@datastore}\'`
     processes
   end
@@ -91,7 +99,8 @@ class VMServer
   # Execute a program in the Guest OS
 
   def run_program_in_guest(program,prog_args={})
-    prog_args = prog_args[:prog_args]
+    command    = 'runProgramInGuest'
+    prog_args  = prog_args[:prog_args]
     vm_command = "#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} \'#{@datastore}\' -activeWindow #{program} #{prog_args}"
     log vm_command
     result = system(vm_command)
@@ -104,14 +113,11 @@ class VMServer
   # Kill a process with the given PID in the Guest OS
 
   def kill_process_in_guest(pid)
+    command    = 'killProcessInGuest'
     vm_command = "#{@base_command} -gu #{@guest_user} -gp #{guest_password} #{command} \'#{@datastore}\' #{pid}"
     log vm_command
     result = system(vm_command)
     result ? log("Program executed successfully in guest.") : log("Error! Failed to execute program in guest.")
     result
   end
-
 end
-
-
-
