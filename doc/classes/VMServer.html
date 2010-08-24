@@ -86,16 +86,16 @@
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
+      <a href="#M000007">copy_file_from_guest_to_host</a>&nbsp;&nbsp;
       <a href="#M000006">copy_file_from_host_to_guest</a>&nbsp;&nbsp;
-      <a href="#M000007">copy_from_guest_to_host</a>&nbsp;&nbsp;
       <a href="#M000003">file_exists_in_guest?</a>&nbsp;&nbsp;
       <a href="#M000008">get_processes_in_guest</a>&nbsp;&nbsp;
       <a href="#M000010">kill_process_in_guest</a>&nbsp;&nbsp;
       <a href="#M000002">log</a>&nbsp;&nbsp;
+      <a href="#M000005">mkdir</a>&nbsp;&nbsp;
       <a href="#M000001">new</a>&nbsp;&nbsp;
       <a href="#M000009">run_program_in_guest</a>&nbsp;&nbsp;
-      <a href="#M000005">vm_mkdir</a>&nbsp;&nbsp;
-      <a href="#M000004">vm_start</a>&nbsp;&nbsp;
+      <a href="#M000004">start</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -171,7 +171,7 @@
         <div class="method-heading">
           <a href="VMServer.src/M000001.html" target="Code" class="method-signature"
             onclick="popupCode('VMServer.src/M000001.html');return false;">
-          <span class="method-name">new</span><span class="method-args">() {|self if block_given?| ...}</span>
+          <span class="method-name">new</span><span class="method-args">() {|self| ...}</span>
           </a>
         </div>
       
@@ -180,6 +180,23 @@
       </div>
 
       <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000007" class="method-detail">
+        <a name="M000007"></a>
+
+        <div class="method-heading">
+          <a href="VMServer.src/M000007.html" target="Code" class="method-signature"
+            onclick="popupCode('VMServer.src/M000007.html');return false;">
+          <span class="method-name">copy_file_from_guest_to_host</span><span class="method-args">(src,dest)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Copy a file from Guest OS to Host OS
+</p>
+        </div>
+      </div>
 
       <div id="method-M000006" class="method-detail">
         <a name="M000006"></a>
@@ -194,23 +211,6 @@
         <div class="method-description">
           <p>
 Copy a file from host OS to Guest OS
-</p>
-        </div>
-      </div>
-
-      <div id="method-M000007" class="method-detail">
-        <a name="M000007"></a>
-
-        <div class="method-heading">
-          <a href="VMServer.src/M000007.html" target="Code" class="method-signature"
-            onclick="popupCode('VMServer.src/M000007.html');return false;">
-          <span class="method-name">copy_from_guest_to_host</span><span class="method-args">(src,dest)</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p>
-Copy a file from Guest OS to Host OS
 </p>
         </div>
       </div>
@@ -283,6 +283,23 @@ Logs if logging is enabled
         </div>
       </div>
 
+      <div id="method-M000005" class="method-detail">
+        <a name="M000005"></a>
+
+        <div class="method-heading">
+          <a href="VMServer.src/M000005.html" target="Code" class="method-signature"
+            onclick="popupCode('VMServer.src/M000005.html');return false;">
+          <span class="method-name">mkdir</span><span class="method-args">(dir)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Create a directory in the Virtual Machine
+</p>
+        </div>
+      </div>
+
       <div id="method-M000009" class="method-detail">
         <a name="M000009"></a>
 
@@ -300,30 +317,13 @@ Execute a program in the Guest OS
         </div>
       </div>
 
-      <div id="method-M000005" class="method-detail">
-        <a name="M000005"></a>
-
-        <div class="method-heading">
-          <a href="VMServer.src/M000005.html" target="Code" class="method-signature"
-            onclick="popupCode('VMServer.src/M000005.html');return false;">
-          <span class="method-name">vm_mkdir</span><span class="method-args">(dir)</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p>
-Create a directory in the Virtual Machine
-</p>
-        </div>
-      </div>
-
       <div id="method-M000004" class="method-detail">
         <a name="M000004"></a>
 
         <div class="method-heading">
           <a href="VMServer.src/M000004.html" target="Code" class="method-signature"
             onclick="popupCode('VMServer.src/M000004.html');return false;">
-          <span class="method-name">vm_start</span><span class="method-args">()</span>
+          <span class="method-name">start</span><span class="method-args">()</span>
           </a>
         </div>
       

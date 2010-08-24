@@ -10,8 +10,9 @@
   <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
 </head>
 <body class="standalone-code">
-  <pre><span class="ruby-comment cmt"># File lib/vmserver.rb, line 106</span>
+  <pre><span class="ruby-comment cmt"># File lib/vmserver.rb, line 115</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">kill_process_in_guest</span>(<span class="ruby-identifier">pid</span>)
+    <span class="ruby-identifier">command</span>    = <span class="ruby-value str">'killProcessInGuest'</span>
     <span class="ruby-identifier">vm_command</span> = <span class="ruby-node">&quot;#{@base_command} -gu #{@guest_user} -gp #{guest_password} #{command} \'#{@datastore}\' #{pid}&quot;</span>
     <span class="ruby-identifier">log</span> <span class="ruby-identifier">vm_command</span>
     <span class="ruby-identifier">result</span> = <span class="ruby-identifier">system</span>(<span class="ruby-identifier">vm_command</span>)

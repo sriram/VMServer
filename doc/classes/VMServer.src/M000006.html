@@ -10,8 +10,9 @@
   <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
 </head>
 <body class="standalone-code">
-  <pre><span class="ruby-comment cmt"># File lib/vmserver.rb, line 60</span>
+  <pre><span class="ruby-comment cmt"># File lib/vmserver.rb, line 65</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">copy_file_from_host_to_guest</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">dest</span>)
+    <span class="ruby-identifier">command</span>    = <span class="ruby-value str">'copyFileFromHostToGuest'</span>
     <span class="ruby-identifier">vm_command</span> = <span class="ruby-node">&quot;#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} \'#{@datastore}\' \'#{src}\' \'#{dest}\'&quot;</span>
     <span class="ruby-identifier">log</span> <span class="ruby-identifier">vm_command</span>
     <span class="ruby-identifier">result</span> = <span class="ruby-identifier">system</span>(<span class="ruby-identifier">vm_command</span>)

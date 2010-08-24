@@ -5,13 +5,14 @@
 
 <html>
 <head>
-  <title>vm_mkdir (VMServer)</title>
+  <title>mkdir (VMServer)</title>
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
   <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
 </head>
 <body class="standalone-code">
-  <pre><span class="ruby-comment cmt"># File lib/vmserver.rb, line 48</span>
-  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">vm_mkdir</span>(<span class="ruby-identifier">dir</span>)
+  <pre><span class="ruby-comment cmt"># File lib/vmserver.rb, line 52</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">mkdir</span>(<span class="ruby-identifier">dir</span>)
+    <span class="ruby-identifier">command</span>    = <span class="ruby-value str">'createDirectoryInGuest'</span>
     <span class="ruby-identifier">vm_command</span> = <span class="ruby-node">&quot;#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} \'#{@datastore}\' \'#{dir}\'&quot;</span>
     <span class="ruby-identifier">log</span> <span class="ruby-identifier">vm_command</span>
     <span class="ruby-identifier">result</span> = <span class="ruby-identifier">system</span>(<span class="ruby-identifier">vm_command</span>)

@@ -12,7 +12,9 @@
 <body class="standalone-code">
   <pre><span class="ruby-comment cmt"># File lib/vmserver.rb, line 5</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>
-    <span class="ruby-keyword kw">yield</span> <span class="ruby-keyword kw">self</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+    <span class="ruby-keyword kw">yield</span> <span class="ruby-keyword kw">self</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>,  <span class="ruby-value str">&quot;Please make sure you have set host ,vm_user and vm_password in the configuration!&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@host</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@vm_user</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@vm_password</span>
+
     <span class="ruby-comment cmt"># This is the base command used for all the commands.</span>
     <span class="ruby-ivar">@base_command</span>       = <span class="ruby-node">&quot;vmrun -T server -h #{@host} -u #{@vm_user} -p #{@vm_password}&quot;</span>
   <span class="ruby-keyword kw">end</span></pre>

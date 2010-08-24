@@ -5,13 +5,14 @@
 
 <html>
 <head>
-  <title>vm_start (VMServer)</title>
+  <title>start (VMServer)</title>
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
   <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
 </head>
 <body class="standalone-code">
-  <pre><span class="ruby-comment cmt"># File lib/vmserver.rb, line 36</span>
-  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">vm_start</span>
+  <pre><span class="ruby-comment cmt"># File lib/vmserver.rb, line 39</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">start</span>
+    <span class="ruby-identifier">command</span>    = <span class="ruby-value str">'start'</span>
     <span class="ruby-identifier">vm_command</span> = <span class="ruby-node">&quot;#{@base_command} #{command} \'#{@datastore}\'&quot;</span>
     <span class="ruby-identifier">log</span> <span class="ruby-identifier">vm_command</span>
     <span class="ruby-identifier">result</span> = <span class="ruby-identifier">system</span>(<span class="ruby-identifier">vm_command</span>)
