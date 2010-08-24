@@ -1,6 +1,6 @@
 class VMServer
 
-  attr_accessor :vm_user, :vm_password, :guest_user, :guest_password, :datastore, :host, :url, :logging_enabled
+  attr_accessor :vm_user, :vm_password, :guest_user, :guest_password, :datastore, :host, :logging_enabled
 
   def initialize
     yield self

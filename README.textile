@@ -12,7 +12,6 @@ bc. vmserver = VMServer.new do |vm|
   vm.guest_password   = 'xxxxxxxxxx'
   vm.guest_user       = 'administrator'
   vm.datastore        = '[standard] img/img.vmx'
-  vm.url              = 'www.xyz.com'
   vm.logging_enabled  = true
 end
 
