@@ -19,14 +19,14 @@ end
 
 *To start the VMServer*
 
-  @vmserver.start@
+bc. vmserver.start
 
 *To create a directory in the Guest OS*
 
-  @vmserver.mkdir('dir')@
+bc. vmserver.mkdir('dir')
 
 *To copy a file from Host OS to Guest OS*
 
-  @vmserver.copy_file_from_host_to_guest('src','dest')@
+bc. vmserver.copy_file_from_host_to_guest('src','dest')
 
-  *_Note_* The src and dest need to be absolute paths.
+*_Note_* The src and dest need to be absolute paths.
