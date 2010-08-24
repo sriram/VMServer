@@ -5,16 +5,17 @@ Place all your configuartion in the initialize block.
 Now interacting with VMServer should be a piece of cake :)
 
 
-@vmserver = VMServer.new do |vm|@
-@vm.host             = 'https://xx.xx.xx.xx:8333/sdk'@
-@vm.vm_user          = 'root'@
-@vm.vm_password      = 'xxxxxxxx'@
-@vm.guest_password   = 'xxxxxxxxxx'@
-@vm.guest_user       = 'administrator'@
-@vm.datastore        = '[standard] img/img.vmx'@
-@vm.url              = 'www.xyz.com'@
-@vm.logging_enabled  = true@
-@end@
+bc. vmserver = VMServer.new do |vm|
+  vm.host             = 'https://xx.xx.xx.xx:8333/sdk'
+  vm.vm_user          = 'root'
+  vm.vm_password      = 'xxxxxxxx'
+  vm.guest_password   = 'xxxxxxxxxx'
+  vm.guest_user       = 'administrator'
+  vm.datastore        = '[standard] img/img.vmx'
+  vm.url              = 'www.xyz.com'
+  vm.logging_enabled  = true
+end
+
 
 *To start the VMServer*
 
