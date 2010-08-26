@@ -24,8 +24,13 @@ bc. vmserver.start
 
 bc. vmserver.mkdir('dir')
 
+*To create a directory in the guest OS*
+
+bc. vmserver.mkdir('c:\test folder\vm server')
+
 *To copy a file from Host OS to Guest OS*
 
 bc. vmserver.copy_file_from_host_to_guest('src','dest')
 
 *_Note_* The src and dest need to be absolute paths.
+
