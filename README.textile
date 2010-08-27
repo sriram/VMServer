@@ -45,7 +45,7 @@ bc. vmserver.copy_file_from_host_to_guest('src','dest')
 
 bc. vmserver.ls('dir')
 
-*This will return an array of files*
+_This will return an array of files_
 
 *To remove a directory in the Guest OS*
 
@@ -67,7 +67,7 @@ bc. vmserver.run_program_in_guest('path_to_prog',:prog_args => 'if any')
 
 bc. vmserver.get_processes_in_guest
 
-*This will return an array of processes along with their PIDs*
+_This will return an array of processes along with their PIDs_
 
 *To kill a process in guest*
 
