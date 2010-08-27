@@ -191,11 +191,13 @@ class VMServer
 
   def ls(dir)
     command    = 'listDirectoryInGuest'
-    vm_command = "#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} \'#{@datastore}\' \'#{dir}\'"
-    log vm_command
-    result = system(vm_command)
-    result ? log("Listing Successful.") : log("Error! Listing directory failed.")
-    result
+#    vm_command = "#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} \'#{@datastore}\' \'#{dir}\'"
+#    log vm_command
+#    result = system(vm_command)
+#    result ? log("Listing Successful.") : log("Error! Listing directory failed.")
+#    result
+    files = `#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} \'#{@datastore}\' \'#{dir}\'`
+    files
   end
 
 
