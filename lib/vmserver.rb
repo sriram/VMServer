@@ -103,7 +103,48 @@ class VMServer
     result
   end
 
-  
+
+  # -------------------------------------- VM Server Snapshots -------------------------------------------------
+
+  ##
+  # Take a snapshot of the Virtual Machine
+
+  def snapshot(name="snapshot_#{Time.now.strftime("%m%d")}")
+    command    = 'snapshot'
+    vm_command = "#{@base_command} #{command} \'#{@datastore}\' #{name}"
+    log vm_command
+    result = system(vm_command)
+    result  ? log("SnapShot successful") : log("Error! VM SnapShot failed.")
+    result
+  end
+
+
+  ##
+  # Revert to previous snapshot
+
+  def revert_to_snapshot(name)
+    command    = 'revertToSnapshot'
+    vm_command = "#{@base_command} #{command} \'#{@datastore}\' #{name}"
+    log vm_command
+    result = system(vm_command)
+    result  ? log("Revert SnapShot successful") : log("Error! VM Revert SnapShot failed.")
+    result
+  end
+
+
+  ##
+  # Delete snapshot of the Virtual Machine
+
+  def delete_snapshot(name)
+    command    = 'deleteSnapshot'
+    vm_command = "#{@base_command} #{command} \'#{@datastore}\' #{name}"
+    log vm_command
+    result = system(vm_command)
+    result  ? log("SnapShot deleted successful") : log("Error! VM SnapShot delete failed.")
+    result
+  end
+
+
   # -------------------------------------- Working with Files and Directory in Guest OS -------------------------
   #
   ##
@@ -214,7 +255,7 @@ class VMServer
   def run_program_in_guest(program,prog_args={})
     command    = 'runProgramInGuest'
     prog_args  = prog_args[:prog_args]
-    vm_command = "#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} \'#{@datastore}\' -activeWindow #{program} #{prog_args}"
+    vm_command = "#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} \'#{@datastore}\' -activeWindow \'#{program}\' #{prog_args}"
     log vm_command
     result = system(vm_command)
     result ? log("Program executed successfully in guest.") : log("Error! Failed to execute program in guest.")
