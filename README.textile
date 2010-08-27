@@ -42,6 +42,7 @@ bc. vmserver.copy_file_from_host_to_guest('src','dest')
 *_Note_* The src and dest need to be absolute paths.
 
 *To list the files under a directory*
+
 bc. vmserver.ls('dir')
 
 *This will return an array of files*
@@ -63,6 +64,7 @@ bc. vmserver.rmdir('c:\exampledir')
 bc. vmserver.run_program_in_guest('path_to_prog',:prog_args => 'if any')
 
 *To list processes in guest*
+
 bc. vmserver.get_processes_in_guest
 
 *This will return an array of processes along with their PIDs*
