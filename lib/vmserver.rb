@@ -196,8 +196,10 @@ class VMServer
 #    result = system(vm_command)
 #    result ? log("Listing Successful.") : log("Error! Listing directory failed.")
 #    result
-    files = `#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} \'#{@datastore}\' \'#{dir}\'`
-    files
+    entries = `#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} \'#{@datastore}\' \'#{dir}\'`
+    # The entries would be a list of entries searated by new line. Convert this to an array.
+    entries = entries.split("\n")
+    entries
   end
 
 
