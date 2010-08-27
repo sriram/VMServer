@@ -20,11 +20,18 @@ end
 
 bc. vmserver.start
 
+*To stop the VMServer*
+
+bc. vmserver.stop
+
+*You can also do a hard stop which is equivalent of plugging of the syetem physically*
+bc. vmserver.stop('hard')
+
 *To create a directory in the Guest OS*
 
 bc. vmserver.mkdir('dir')
 
-*To create a directory in the guest OS*
+*Example*
 
 bc. vmserver.mkdir('c:\test folder\vm server')
 
@@ -33,4 +40,46 @@ bc. vmserver.mkdir('c:\test folder\vm server')
 bc. vmserver.copy_file_from_host_to_guest('src','dest')
 
 *_Note_* The src and dest need to be absolute paths.
+
+* To list the files under a directory*
+bc. vmserver.ls('dir')
+
+*This will return an array of files*
+
+*To remove a directory in the Guest OS*
+
+bc. vmserver.rmdir('dir')
+
+*To remove a file in the Guest OS*
+
+bc. vmserver.rmfile('file')
+
+*Example*
+
+bc. vmserver.rmdir('c:\exampledir')
+
+* To run a program in the guest OS*
+
+bc. vmserver.run_program_in_guest('path_to_prog',:prog_args => 'if any')
+
+* To list processes in guest*
+bc. vmserver.get_processes_in_guest
+
+*This will return an array of processes along with their PIDs*
+
+* To kill a process in guest*
+
+bc. vmserver.kill_process_in_guest('pid')
+
+* To take a snapshot of the guest OS*
+
+bc. vmserver.capture_screen('path_to_output_file_on_host')
+
+
+
+
+
+
+
+
 
