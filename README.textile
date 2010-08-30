@@ -24,7 +24,7 @@ bc. vmserver.start
 
 bc. vmserver.stop
 
-*You can also do a hard stop which is equivalent of plugging of the syetem physically*
+*You can also do a hard stop which is equivalent of plugging of the system physically*
 bc. vmserver.stop('hard')
 
 *To create a directory in the Guest OS*

@@ -259,7 +259,7 @@ class VMServer
   def run_program_in_guest(program,prog_args={})
     command    = 'runProgramInGuest'
     prog_args  = prog_args[:prog_args]
-    vm_command = "#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} \'#{@datastore}\' -activeWindow \'#{program}\' #{prog_args}"
+    vm_command = %Q{#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} '#{@datastore}' -activeWindow '#{program}' #{prog_args}}
     log vm_command
     result = system(vm_command)
     result ? log("Program executed successfully in guest.") : log("Error! Failed to execute program in guest.")
