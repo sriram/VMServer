@@ -207,8 +207,8 @@ class VMServer
   # Checks if a file exists in the guest OS
 
   def file_exists_in_guest?(file)
-    vm_command = %Q{#{@base_command} -gu #{@guest_user} -gp #{@guest_password} fileExistsInGuest '#{datastore}' '#{file}'}
-    output = system(vm_command)
+    output = `#{@base_command} -gu #{@guest_user} -gp #{@guest_password} fileExistsInGuest '#{datastore}' '#{file}'`
+#    output = system(vm_command)
     if output =~ /The file exists/
       return true
     else
