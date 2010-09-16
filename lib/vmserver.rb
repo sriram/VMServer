@@ -152,7 +152,7 @@ class VMServer
 
   def mkdir(dir)
     command    = 'createDirectoryInGuest'
-    vm_command = %Q{#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} "#{@datastore}" '#{dir}'}
+    vm_command = %Q{#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} "#{@datastore}" "#{dir}"}
     log vm_command
     result = system(vm_command)
     result  ? log("Directory created successfully in guest.") : log("Error! Directory could not be created.")
@@ -165,7 +165,7 @@ class VMServer
 
   def rmdir(dir)
     command    = 'deleteDirectoryInGuest'
-    vm_command = %Q{#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} "#{@datastore}" '#{dir}'}
+    vm_command = %Q{#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} "#{@datastore}" "#{dir}"}
     log vm_command
     result = system(vm_command)
     result ? log("Directory deleted successfully.") : log("Error! Failed to delete directory.")
@@ -178,7 +178,7 @@ class VMServer
 
   def rmfile(file)
     command    = 'deleteFileInGuest'
-    vm_command = %Q{#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} "#{@datastore}" '#{file}'}
+    vm_command = %Q{#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} "#{@datastore}" "#{file}"}
     log vm_command
     result = system(vm_command)
     result ? log("File deleted successfully.") : log("Error! Failed to delete file.")
@@ -191,7 +191,7 @@ class VMServer
 
   def ls(dir)
     command    = 'listDirectoryInGuest'
-    entries = `#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} \'#{@datastore}\' \'#{dir}\'`
+    entries = `#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} \"#{@datastore}\" \"#{dir}\"`
     # The entries would be a list of entries separated by new line. Convert this to an array.
     entries = entries.split("\n")
     entries
@@ -202,7 +202,7 @@ class VMServer
   # Checks if a file exists in the guest OS
 
   def file_exists_in_guest?(file)
-    output = `#{@base_command} -gu #{@guest_user} -gp #{@guest_password} fileExistsInGuest "#{datastore}" '#{file}'`
+    output = `#{@base_command} -gu #{@guest_user} -gp #{@guest_password} fileExistsInGuest "#{datastore}" "#{file}"`
 #    output = system(vm_command)
     if output =~ /The file exists/
       return true
@@ -217,7 +217,7 @@ class VMServer
 
   def copy_file_from_host_to_guest(src, dest)
     command    = 'copyFileFromHostToGuest'
-    vm_command = %Q{#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} "#{@datastore}" '#{src}' '#{dest}'}
+    vm_command = %Q{#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} "#{@datastore}" "#{src}" "#{dest}"}
     log vm_command
     result = system(vm_command)
     result ? log("Copy successful.") : log("Error! Copy failed.")
@@ -230,7 +230,7 @@ class VMServer
 
   def copy_file_from_guest_to_host(src,dest)
     command    = 'copyFileFromGuestToHost'
-    vm_command = %Q{#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} "#{@datastore}" '#{src}' '#{dest}'}
+    vm_command = %Q{#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} "#{@datastore}" "#{src}" "#{dest}"}
     log vm_command
     result = system(vm_command)
     result ? log("Copy successful.") : log("Error! Copy failed.")
@@ -243,7 +243,7 @@ class VMServer
 
   def get_processes_in_guest
     command   = 'listProcessesInGuest'
-    processes = `#{@base_command} -gu #{@guest_user} -gp #{guest_password} #{command} \'#{@datastore}\'`
+    processes = `#{@base_command} -gu #{@guest_user} -gp #{guest_password} #{command} \"#{@datastore}\"`
     processes
   end
 
@@ -254,7 +254,7 @@ class VMServer
   def run_program_in_guest(program,prog_args={})
     command    = 'runProgramInGuest'
     prog_args  = prog_args[:prog_args]
-    vm_command = %Q{#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} "#{@datastore}" -activeWindow '#{program}' #{prog_args}}
+    vm_command = %Q{#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} "#{@datastore}" -activeWindow "#{program}" #{prog_args}}
     log vm_command
     result = system(vm_command)
     result ? log("Program executed successfully in guest.") : log("Error! Failed to execute program in guest.")
@@ -280,7 +280,7 @@ class VMServer
 
   def capture_screen(output_file)
     command    = 'captureScreen'
-    vm_command = %Q{#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} "#{@datastore}" '#{output_file}'}
+    vm_command = %Q{#{@base_command} -gu #{@guest_user} -gp #{@guest_password} #{command} "#{@datastore}" "#{output_file}"}
     log vm_command
     result = system(vm_command)
     result ? log("File deleted successfully.") : log("Error! Failed to delete file.")
